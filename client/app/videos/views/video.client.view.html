@@ -1,0 +1,177 @@
+<!-- The create video view -->
+<section data-ng-controller="VideoController">
+    <!-- <div class="col-md-8 col-md-12 col-xs-12">
+        <div class="video-container" ng-repeat="video in videos">
+            <div class="video-box">
+                <video controls style="width: 100%; height: 100%;">
+                    <source ng-src="{{video.url}}" type="video/mp4">
+                    <source ng-src="{{video.url}}" type="video/ogg">
+                </video>
+                <div class="time">
+                    <p>3:04</p>
+                </div>
+                <div class="clck">
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="info-box">
+                <h5>
+                    <a href="#!/videos/{{video._id}}" class="title title-info">
+                        {{video.name}}
+                    </a>
+                </h5>
+                <ul>
+                    <li>
+                        <p class="author author-info"><a href="#" class="author">John Maniya</a></p>
+                    </li>
+                    <li class="right-list">
+                        <p class="views views-info">2,114,200 views</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+    <div class="show-top-grids">
+        <div class="col-sm-8 single-left" ng-repeat="video in videos">
+            <div class="song">
+                <div class="song-info">
+                    <h3>{{video.name}}</h3>
+                </div>
+                <div class="video-grid">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source ng-src="{{video.url}}" type="video/mp4">
+                        <source ng-src="{{video.url}}" type="video/ogg">
+                    </video>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="published">
+
+                <p>{{video.description}}</p>
+            </div>
+            <div class="all-comments">
+                <div class="all-comments-info">
+                    <a href="#">All Comments (8,657)</a>
+                    <div class="box">
+                        <form>
+                            <input type="text" placeholder="Name" required=" ">
+                            <input type="text" placeholder="Email" required=" ">
+                            <input type="text" placeholder="Phone" required=" ">
+                            <textarea placeholder="Message" required=" "></textarea>
+                            <input type="submit" value="SEND">
+                            <div class="clearfix"> </div>
+                        </form>
+                    </div>
+                    <div class="all-comments-buttons">
+                        <ul>
+                            <li><a href="#" class="top">Top Comments</a></li>
+                            <li><a href="#" class="top newest">Newest First</a></li>
+                            <li><a href="#" class="top my-comment">My Comments</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="media-grids">
+                    <div class="media">
+                        <h5>Tom Brown</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Mark Johnson</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Steven Smith</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Marry Johne</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Mark Johnson</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Mark Johnson</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <h5>Peter Johnson</h5>
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+                            <span>View all posts by :<a href="#"> Admin </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 single-right" ng-controller="VideoListController">
+            <h3>Up Next</h3>
+            <div class="single-grid-right">
+                <div class="single-right-grids" ng-repeat="video in videos">
+                    <div class="col-md-4 single-right-grid-left">
+                        <a href="#!/videos/{{video._id}}">
+                            <video style="width: 100%; height: 100%;">
+                                <source ng-src="{{video.url}}" type="video/mp4">
+                                <source ng-src="{{video.url}}" type="video/ogg">
+                            </video>
+                        </a>
+                    </div>
+                    <div class="col-md-8 single-right-grid-right">
+                        <a href="single.html" class="title">{{video.name}}</a>
+                        <p class="author"><a href="#" class="author">{{video.title}}</a></p>
+                        <p class="views">2,114,200 views</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</section>
