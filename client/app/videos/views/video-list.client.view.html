@@ -5,7 +5,7 @@
             <h3>Videos</h3>
         </div>
         <div>
-            <div class="col-md-4 col-sm-2 col-xs-12 " ng-repeat="video in videos">
+            <!-- <div class="col-md-4 col-sm-2 col-xs-12 " ng-repeat="video in videos">
                 <div class="video-container">
                     <div class="video-box">
                         <video controls>
@@ -35,9 +35,22 @@
                                 </p>
                             </li>
                         </ul>
-                        </div>
+                        
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> -->
+            <div class="col-md-4 resent-grid recommended-grid slider-top-grids" ng-repeat="video in videos">
+                <div class="video-box">
+                    <div class="resent-grid-img recommended-grid-img vido-item">
+                        <video class="video-control" id="{{video._id}}" ng-click="pauseOrPlay()">
+                            <source ng-src="{{video.url}}" type="video/mp4">
+                            <source ng-src="{{video.url}}" type="video/ogg">
+                        </video>
+                        <div class="playpause"></div>
+                    </div>
+                    <div class="resent-grid-info recommended-grid-info">
+                        <h3><a href="#!/videos/{{video._id}}" class="title title-info">{{video.name}}</a></h3>
+                        <div star-rating rating-value="video.rating" max="max" on-rating-selected="getSelectedRating(video._id, rating)"></div>
+                    </div>
+                </div>
 </section>

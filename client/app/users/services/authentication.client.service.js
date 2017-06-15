@@ -32,8 +32,35 @@ angular.module('users').factory('Authentication', ['$http', '$q',
 
             return deffered.promise;
         }
+
+        var logoutUser = function(sessionId) {
+            var deffered = $q.defer();
+            var req = {
+                method: 'GET',
+                url: '/user/logout?sessionId=' + sessionId,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            $http(req).then(function(data) {
+                if (data.status === 200 && data.data.status === "success") {
+                    deffered.resolve({
+                        'status': data.data.status
+                    });
+                }
+            }, function(data) {
+                deffered.reject({
+                    'status': data.data.status,
+                    'error': data.data.error
+                });
+            });
+
+            return deffered.promise;
+        }
         return {
-            LoginUser: loginUser
+            LoginUser: loginUser,
+            LogoutUser: logoutUser
         }
     }
 ]);

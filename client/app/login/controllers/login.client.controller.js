@@ -32,5 +32,13 @@ angular.module('login').controller('LoginController', ['$scope', '$localStorage'
             	$scope.user = error;
             });
         }
+
+        $scope.logoutUser = function(){
+            Authentication.LogoutUser($localStorage.sessionId).then(function(){
+                delete $localStorage.username;
+                delete $localStorage.sessionId;
+                $window.location.reload();
+            });
+        }
     }
 ]);

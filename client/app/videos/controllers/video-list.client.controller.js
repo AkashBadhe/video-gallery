@@ -6,13 +6,8 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
 
     function($scope, $http, $localStorage, Ratings) {
         $scope.sessionId = $localStorage.sessionId;
-        $scope.limit = 10;
         $scope.videos = [];
-
-        $scope.rating = 0;
         $scope.max = 5;
-
-        
 
         $scope.getSelectedRating = function(videoId, rating) {
             Ratings.SetRating($scope.sessionId, videoId, rating);

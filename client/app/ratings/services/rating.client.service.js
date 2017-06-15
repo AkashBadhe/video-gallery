@@ -12,8 +12,8 @@ angular.module('ratings').factory('Ratings', ['$http',
                     'Content-Type': 'application/json'
                 },
                 body:{
-                	"videoId": videoId,
-                	"rating": rating
+                	"videoId": videoId.toString(),
+                	"rating": rating.toString()
                 }
             }
 

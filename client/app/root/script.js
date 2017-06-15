@@ -9,13 +9,23 @@ jQuery(function($) {
         }
     });
 
-    $('video').off('play').on('play', function() {
-        var dd = this.id
+    $(document).on('click', '.vido-item' , function() {
+        var video = $(this).children('video').get(0); 
+        var playButton = $(this).children('.playpause');
+
         $('video').each(function(index) {
-            if (dd != this.id) {
+            if (this.id != video.id) {
                 this.pause();
                 this.currentTime = 0;
+                $(this).parents('div').find('.playpause').fadeIn();
             }
         });
+        if (video.paused) {
+            video.play();
+            playButton.fadeOut();
+        } else {
+            video.pause();
+            playButton.fadeIn();
+        }
     });
 });
