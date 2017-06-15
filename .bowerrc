@@ -1,3 +1,7 @@
 { 
-	"directory": "client/lib" 
+	"directory": "client/lib",
+	"strict-ssl": false,
+    "registry": "http://bower.herokuapp.com",
+	"proxy":"http://emea-chbs-proxy.eu.novartis.net:2010",
+	"https-proxy":"http://emea-chbs-proxy.eu.novartis.net:2010"
 }
