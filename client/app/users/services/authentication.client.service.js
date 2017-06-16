@@ -1,9 +1,15 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Create the 'Authentication' service
+/**
+ * Creates the 'Authentication' service.
+ */
 angular.module('users').factory('Authentication', ['$http', '$q',
     function($http, $q) {
+        /**
+         * Calls user login api to log in user.
+         * @return {[object]} user
+         */
         var loginUser = function(user) {
         	var deffered = $q.defer();
             var req = {
@@ -33,6 +39,10 @@ angular.module('users').factory('Authentication', ['$http', '$q',
             return deffered.promise;
         }
 
+        /**
+         * Calls logout user api.
+         * @return {[object]} sessionId
+         */
         var logoutUser = function(sessionId) {
             var deffered = $q.defer();
             var req = {

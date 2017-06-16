@@ -1,11 +1,17 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Create the 'video' controller
+/**
+ * Creates the 'video' controller
+ */
 angular.module('video').controller('VideoController', ['$scope', '$http', '$localStorage', '$routeParams',
     function($scope, $http, $localStorage, $routeParams) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
+        
+        /**
+         * Loads single video by id.
+         */
         $scope.loadVideo = function() {
             var req = {
                 method: 'GET',

@@ -1,7 +1,9 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Configure the 'video' module routes
+/**
+ * Configures the 'video' module routes
+ */
 angular.module('video').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.

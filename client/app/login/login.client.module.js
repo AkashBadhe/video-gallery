@@ -1,5 +1,7 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Create the 'example' module
+/**
+ * Creats login module
+ */
 angular.module('login', []);

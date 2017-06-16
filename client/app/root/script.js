@@ -1,4 +1,7 @@
 jQuery(function($) {
+    /**
+     * Binds scroll event.
+     */
     $(window).bind('scroll', function() {
         var listView = $("#video-list"),
             videoContainer = $('#video-container');
@@ -9,6 +12,9 @@ jQuery(function($) {
         }
     });
 
+    /**
+     * Binds video click event and handles play and pause of video.
+     */
     $(document).on('click', '.vido-item' , function() {
         var video = $(this).children('video').get(0); 
         var playButton = $(this).children('.playpause');

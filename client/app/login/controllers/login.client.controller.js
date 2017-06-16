@@ -1,11 +1,16 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Create the 'login' controller
+/**
+ * Creates login controller.
+ */
 angular.module('login').controller('LoginController', ['$scope', '$localStorage', 'Authentication', 'md5', '$window',
     function($scope, $localStorage, Authentication, md5, $window) {
 		$scope.storage = $localStorage;		
 
+        /**
+         * Set current user name and sessionId in localStorage.
+         */
         $scope.user = (function() {
             if ($scope.storage.userName && $scope.storage.sessionId) {
                 return {
@@ -18,6 +23,9 @@ angular.module('login').controller('LoginController', ['$scope', '$localStorage'
 
         $scope.loginError = null;
 
+        /**
+         * Log in user.
+         */
         $scope.loginUser = function(){
             $scope.user = Authentication.LoginUser({ 
             	'username': $scope.user.username, 
@@ -32,7 +40,9 @@ angular.module('login').controller('LoginController', ['$scope', '$localStorage'
             	$scope.user = error;
             });
         }
-
+        /**
+         * Log off the current user.
+         */
         $scope.logoutUser = function(){
             Authentication.LogoutUser($localStorage.sessionId).then(function(){
                 delete $localStorage.username;

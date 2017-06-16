@@ -1,9 +1,17 @@
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-// Create the 'ratings' service
+/**
+ * Create the 'ratings' service.
+ */
 angular.module('ratings').factory('Ratings', ['$http', '$q',
     function($http, $q) {
+        /**
+         * Sets video rating.
+         * @param {[string]} sessionId
+         * @param {[string]} videoId
+         * @param {[int]} rating
+         */
         var setRating = function(sessionId, videoId, rating) {
             var deferred = $q.defer();
             var req = {
@@ -29,6 +37,10 @@ angular.module('ratings').factory('Ratings', ['$http', '$q',
             return deferred.promise;
         }
 
+        /**
+         * Calculate avarage rating.
+         * @return {[array]} ratings - Array of ratings.
+         */
         var calculateRating = function(ratings) {
             var sum = 0;
             if (!ratings || ratings.length === 0) {
