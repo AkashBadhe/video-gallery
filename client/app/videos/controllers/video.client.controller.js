@@ -6,20 +6,24 @@ angular.module('video').controller('VideoController', ['$scope', '$http', '$loca
     function($scope, $http, $localStorage, $routeParams) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
-        var req = {
-            method: 'GET',
-            url: '/video?sessionId=' + $localStorage.sessionId + '&videoId=' + $routeParams.videoId,
-            headers: {
-                'Content-Type': 'application/json'
+        $scope.loadVideo = function() {
+            var req = {
+                method: 'GET',
+                url: '/video?sessionId=' + $localStorage.sessionId + '&videoId=' + $routeParams.videoId,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
+
+            $http(req).then(function(data) {
+                if (data.status === 200 && data.data.status === "success") {
+                    $scope.videos.push(data.data.data);
+                }
+            }, function(data) {
+
+            });
         }
 
-        $http(req).then(function(data) {
-            if (data.status === 200 && data.data.status === "success") {
-                $scope.videos.push(data.data.data);
-            }
-        }, function(data) {
-
-        });
+        $scope.loadVideo();
     }
 ]);

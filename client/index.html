@@ -16,7 +16,7 @@
     }
     </script>
     <!-- bootstrap -->
-    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
     <!-- //bootstrap -->
     <link href="css/dashboard.css" rel="stylesheet">
     <!-- Custom Theme files -->
@@ -45,18 +45,23 @@
         </div>
     </div>
     <!-- Load local libraries -->
-    <script type="text/javascript" src="/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="/lib/ngStorage.min.js"></script>
-    <script type="text/javascript" src="/lib/angular-md5.min.js"></script>
-    <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
-    <script type="text/javascript" src="/lib/ng-infinite-scroll.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="/lib/ngstorage/ngStorage.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-md5/angular-md5.min.js"></script>
+    
+    
+    <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Load scripts -->
     <script type="text/javascript" src="app/root/script.js"></script>
+    
     <!-- Load the root module -->
     <script type="text/javascript" src="app/root/root.client.module.js"></script>
     <script type="text/javascript" src="app/root/controller/root.client.controller.js"></script>
+    
     <!-- Load the login module -->
     <script type="text/javascript" src="app/login/login.client.module.js"></script>
     <script type="text/javascript" src="app/login/controllers/login.client.controller.js"></script>
@@ -69,11 +74,13 @@
     <!-- Load the users module -->
     <script type="text/javascript" src="app/users/users.client.module.js"></script>
     <script type="text/javascript" src="app/users/services/authentication.client.service.js"></script>
+    
     <!-- Load video module -->
     <script type="text/javascript" src="app/videos/video.client.module.js"></script>
     <script type="text/javascript" src="app/videos/config/video.client.route.js"></script>
     <script type="text/javascript" src="app/videos/controllers/video-list.client.controller.js"></script>
     <script type="text/javascript" src="app/videos/controllers/video.client.controller.js"></script>
+    
     <!-- Bootstrap AngularJS application -->
     <script type="text/javascript" src="/application.js"></script>
 </body>

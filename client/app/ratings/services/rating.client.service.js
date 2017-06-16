@@ -2,9 +2,10 @@
 'use strict';
 
 // Create the 'ratings' service
-angular.module('ratings').factory('Ratings', ['$http',
-    function($http) {
+angular.module('ratings').factory('Ratings', ['$http', '$q',
+    function($http, $q) {
         var setRating = function(sessionId, videoId, rating) {
+            var deferred = $q.defer();
             var req = {
                 method: 'POST',
                 url: 'http://localhost:3000/video/ratings?sessionId=' + sessionId,
@@ -19,11 +20,13 @@ angular.module('ratings').factory('Ratings', ['$http',
 
             $http(req).then(function(data) {
                 if (data.status === 200 && data.data.status === "success") {
-                    return data.data.data;
+                    deferred.resolve(data.data.data);
                 }
             }, function(data) {
-            	return data;
+            	deferred.reject(data);
             });
+
+            return deferred.promise;
         }
 
         var calculateRating = function(ratings) {
@@ -35,7 +38,7 @@ angular.module('ratings').factory('Ratings', ['$http',
                     sum += parseInt(ratings[i], 10); //don't forget to add the base 
                 }
                 var avg = sum / ratings.length;
-                return avg;
+                return avg && Math.ceil(avg);
             }
         }
 

@@ -8,14 +8,18 @@ module.exports = function(config) {
 		frameworks: ['jasmine'],
 		// The files load
 		files: [
+			'client/lib/jquery/dist/jquery.min.js',
 			'client/lib/angular/angular.js',
 			'client/lib/angular-resource/angular-resource.js',
 			'client/lib/angular-route/angular-route.js',
 			'client/lib/angular-mocks/angular-mocks.js',
+			'client/lib/angular-md5/angular-md5.min.js',
+			'client/lib/ngstorage/ngStorage.min.js',
+			'client/lib/jasmine-expect/dist/jasmine-matchers.js',
 			'client/application.js',
-			'client/*[!lib]*/*.js',
-			'client/*[!lib]*/*[!tests]*/*.js',
-			'client/*[!lib]*/tests/unit/*.js'
+			'client/app/*[!lib]*/*.js',
+			'client/app/*[!lib]*/*[!tests]*/*.js',
+			'client/app/*[!lib]*/tests/unit/*.js',
 		],
 		// The reporter to use
 		reporters: ['progress'],

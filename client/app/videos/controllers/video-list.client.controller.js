@@ -10,7 +10,11 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
         $scope.max = 5;
 
         $scope.getSelectedRating = function(videoId, rating) {
-            Ratings.SetRating($scope.sessionId, videoId, rating);
+            Ratings.SetRating($scope.sessionId, videoId, rating).then(function(data){
+                //Rating Set sucessfuly.
+            }, function(data){
+                //Unable to rate. Please try again.
+            });
         }
 
         $scope.loadMore = function() {
@@ -36,6 +40,5 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
         }
 
         $scope.loadMore();
-
     }
 ]);
