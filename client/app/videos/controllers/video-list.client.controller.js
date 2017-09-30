@@ -6,7 +6,7 @@
  */
 angular.module('video').controller('VideoListController', ['$scope', '$http', '$localStorage', 'Ratings',
 
-    function($scope, $http, $localStorage, Ratings) {
+    function($scope, $http, $localStorage, Ratings, Videos, Authe) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
         $scope.max = 5;
@@ -28,17 +28,9 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
          * Load more videos as user scrolls to the end of the screen.
          */
         $scope.loadMore = function() {
-            if ($scope.sessionId) {
+            if (IsAuthenticated) {
                 var skip = $scope.videos.length > 0 ? [$scope.videos.length - 1] : 1;
-                var req = {
-                    method: 'GET',
-                    url: '/videos?sessionId=' + $localStorage.sessionId + '&skip=' + skip + '&limit=' + $scope.limit,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-
-                $http(req).then(function(data) {
+                Videos.getVideos(skip, $scope.limit).then(function(data) {
                     if (data.status === 200 && data.data.status === "success") {
                         angular.forEach(data.data.data, function(video, key) {
                             video.rating = Ratings.CalculateRating(video.ratings);
@@ -50,7 +42,6 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
                 });
             }
         }
-
         $scope.loadMore();
     }
 ]);

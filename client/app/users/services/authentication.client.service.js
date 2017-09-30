@@ -68,9 +68,14 @@ angular.module('users').factory('Authentication', ['$http', '$q',
 
             return deffered.promise;
         }
+
+        var isAuthenticated = function(){
+            return ($localStorage.username && $localStorage.sessionId) ? true : false;
+        }
         return {
             LoginUser: loginUser,
-            LogoutUser: logoutUser
+            LogoutUser: logoutUser,
+            IsAuthenticated: isAuthenticated
         }
     }
 ]);
