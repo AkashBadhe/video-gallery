@@ -10,13 +10,15 @@ var mainApplicationModuleName = 'mean';
 var mainApplicationModule = angular.module(mainApplicationModuleName, [
     'ngResource',
     'ngRoute',
-    'angular-md5',
-    'ngStorage',
-    'ratings',
     'root',
     'users',
     'login',
     'video',
+    'videos',
+    'angular-md5',
+    'ngStorage',
+    'infinite-scroll',
+    'ratings'
 ]);
 
 // Configure the hashbang URLs using the $locationProvider services 
