@@ -2,7 +2,7 @@
 'use strict';
 
 // Configure the 'video' module routes
-angular.module('video').config(['$routeProvider',
+angular.module('videos').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/videos', {

@@ -2,4 +2,4 @@
 'use strict';
 
 // Create the 'video' module
-angular.module('video', []);
+angular.module('videos', []);

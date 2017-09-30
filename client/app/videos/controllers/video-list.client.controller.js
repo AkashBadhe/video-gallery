@@ -2,9 +2,9 @@
 'use strict';
 
 // Create the 'video' controller
-angular.module('video').controller('VideoListController', ['$scope', '$http', '$localStorage', 'Ratings',
+angular.module('videos').controller('VideoListController', ['$scope', '$http', '$localStorage', 'Ratings', 'Videos',
 
-    function($scope, $http, $localStorage, Ratings) {
+    function($scope, $http, $localStorage, Ratings, Videos) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
         $scope.max = 5;
@@ -14,16 +14,7 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
         }
 
         $scope.loadMore = function() {
-            var skip = $scope.videos.length > 0 ? [$scope.videos.length - 1] : 1;
-            var req = {
-                method: 'GET',
-                url: '/videos?sessionId=' + $localStorage.sessionId + '&skip=' + skip + '&limit=' + $scope.limit,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-
-            $http(req).then(function(data) {
+            Videos.loadMore($scope.videos, $scope.limit).then(function(data) {
                 if (data.status === 200 && data.data.status === "success") {
                     angular.forEach(data.data.data, function(video, key) {
                         video.rating = Ratings.CalculateRating(video.ratings);
@@ -33,8 +24,7 @@ angular.module('video').controller('VideoListController', ['$scope', '$http', '$
             }, function(data) {
 
             });
-        }
-
+        };
         $scope.loadMore();
 
     }

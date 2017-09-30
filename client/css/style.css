@@ -2893,3 +2893,6 @@ video{
     background-size:contain;
     background-position: center;
 }
+#video-container{
+  min-height: 600px;
+}

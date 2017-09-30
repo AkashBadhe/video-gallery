@@ -2,7 +2,7 @@
 'use strict';
 
 // Create the 'video' controller
-angular.module('video').controller('VideoController', ['$scope', '$http', '$localStorage', '$routeParams',
+angular.module('videos').controller('VideoController', ['$scope', '$http', '$localStorage', '$routeParams',
     function($scope, $http, $localStorage, $routeParams) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
