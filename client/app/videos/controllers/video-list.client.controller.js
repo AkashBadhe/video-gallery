@@ -29,6 +29,8 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
             var video = currentTime.children('video').get(0);
             var playButton = currentTime.children('.playpause');
 
+            currentTime.children('video').attr('controls', '');
+
             $('video').each(function(index) {
                 if (this.id != video.id) {
                     this.pause();
@@ -44,5 +46,15 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
                 playButton.fadeIn();
             }
         };
+
+        angular.element(window).bind('scroll', function() {
+            var listView = angular.element('#video-list'),
+                videoContainer = angular.element(document.querySelector('#video-container'));
+            if (listView.length > 0) {
+                if (angular.element(window).scrollTop() >= videoContainer.offset().top + videoContainer.outerHeight() - window.innerHeight) {
+                    angular.element('#video-list').scope().loadMore();
+                }
+            }
+        });
     }
 ]);
