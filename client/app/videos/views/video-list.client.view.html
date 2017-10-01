@@ -6,8 +6,8 @@
         </div>
         <div class="col-md-4 resent-grid recommended-grid slider-top-grids" ng-repeat="video in videos">
             <div class="video-box">
-                <div class="resent-grid-img recommended-grid-img vido-item">
-                    <video class="video-control" id="{{video._id}}" ng-click="pauseOrPlay()">
+                <div class="resent-grid-img recommended-grid-img vido-item" ng-click="pauseOrPlay($event)">
+                    <video class="video-control" id="{{video._id}}">
                         <source ng-src="{{video.url}}" type="video/mp4">
                         <source ng-src="{{video.url}}" type="video/ogg">
                     </video>

@@ -16,7 +16,6 @@ var mainApplicationModule = angular.module(mainApplicationModuleName, [
     'videos',
     'angular-md5',
     'ngStorage',
-    'infinite-scroll',
     'ratings'
 ]);
 

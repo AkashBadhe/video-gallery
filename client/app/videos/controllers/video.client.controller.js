@@ -2,8 +2,8 @@
 'use strict';
 
 // Create the 'video' controller
-angular.module('videos').controller('VideoController', ['$scope', '$http', '$localStorage', '$routeParams',
-    function($scope, $http, $localStorage, $routeParams) {
+angular.module('videos').controller('VideoController', ['$scope', '$http', '$localStorage', '$routeParams','Authentication', 'Videos',
+    function($scope, $http, $localStorage, $routeParams, Authentication, Videos) {
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
 
@@ -11,7 +11,7 @@ angular.module('videos').controller('VideoController', ['$scope', '$http', '$loc
          * Loads single video by id.
          */
         $scope.loadVideo = function() {
-            if (IsAuthenticated) {
+            if (Authentication.IsAuthenticated) {
                 Videos.GetVideo($routeParams.videoId).then(function(data) {
                     if (data.status === 200 && data.data.status === "success") {
                         $scope.videos.push(data.data.data);
