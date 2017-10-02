@@ -2,11 +2,12 @@
 'use strict';
 
 describe('Testing Ratings Service', function() {
-    var Ratings;
+    var Ratings, Logger;
     beforeEach(function() {
         module('ratings');
         inject(function(_Ratings_) {
             Ratings = _Ratings_;
+            Logger = {};
         });
     });
     it('Should be registered', function() {

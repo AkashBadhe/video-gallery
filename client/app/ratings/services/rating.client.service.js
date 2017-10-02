@@ -4,15 +4,22 @@
 /**
  * Create the 'ratings' service.
  */
-angular.module('ratings').factory('Ratings', ['$http', '$q',
-    function($http, $q) {
+angular.module('ratings').factory('Ratings', ['$http', '$q', '$log',
+    function($http, $q, $log) {
+        var service = {
+            SetRating: setRating,
+            CalculateRating: calculateRating
+        }
+
+        return service;
+
         /**
          * Sets video rating.
          * @param {[string]} sessionId
          * @param {[string]} videoId
          * @param {[int]} rating
          */
-        var setRating = function(sessionId, videoId, rating) {
+        function setRating(sessionId, videoId, rating) {
             var deferred = $q.defer();
             var req = {
                 method: 'POST',
@@ -31,7 +38,7 @@ angular.module('ratings').factory('Ratings', ['$http', '$q',
                     deferred.resolve(data.data.data);
                 }
             }, function(data) {
-            	deferred.reject(data);
+            	handleError("Error while setting the error",data);
             });
 
             return deferred.promise;
@@ -41,7 +48,7 @@ angular.module('ratings').factory('Ratings', ['$http', '$q',
          * Calculate avarage rating.
          * @return {[array]} ratings - Array of ratings.
          */
-        var calculateRating = function(ratings) {
+        function calculateRating(ratings) {
             var sum = 0;
             if (!ratings || ratings.length === 0) {
                 return 0;
@@ -54,10 +61,9 @@ angular.module('ratings').factory('Ratings', ['$http', '$q',
             }
         }
 
-        return {
-        	SetRating: setRating,
-        	CalculateRating: calculateRating
+        function handleError(message, data) {
+            $log.error(message);
+            $log.log(data);
         }
-
     }
 ]);

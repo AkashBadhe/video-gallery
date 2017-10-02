@@ -8,22 +8,32 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
         $scope.sessionId = $localStorage.sessionId;
         $scope.videos = [];
         $scope.max = 5;
-
-        $scope.getSelectedRating = function(videoId, rating) {
-            Ratings.SetRating($scope.sessionId, videoId, rating);
-        }
-
+        
+        /**
+         * Loads a next videos.
+         */
         $scope.loadMore = function() {
             if (Authentication.IsAuthenticated()) {
                 Videos.LoadMore($scope.videos, $scope.limit).then(function(videos) {
                     $scope.videos = $scope.videos.concat(videos)
-                }, function(err) {
-                    //handle err.
                 });
             }
         };
         $scope.loadMore();
 
+        /**
+         * Gets the selected rating.
+         *
+         * @param      {string}  videoId  The video identifier
+         * @param      {Int}  rating   The rating
+         */
+        $scope.getSelectedRating = function(videoId, rating) {
+            Ratings.SetRating($scope.sessionId, videoId, rating);
+        }
+
+        /**
+         * Play Or Pause the current video
+         */
         $scope.pauseOrPlay = function($event) {
             var currentTime = $($event.currentTarget);
             var video = currentTime.children('video').get(0);
@@ -45,6 +55,9 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
             }
         };
 
+        /**
+         * Bind the scroll event to the window.
+         */
         angular.element(window).bind('scroll', function() {
             var listView = angular.element('#video-list'),
                 videoContainer = angular.element(document.querySelector('#video-container'));

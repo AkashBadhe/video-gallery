@@ -8,16 +8,12 @@ angular.module('videos').controller('VideoController', ['$scope', '$http', '$loc
         $scope.videos = [];
 
         /**
-         * Loads single video by id.
+         * Loads a video.
          */
         $scope.loadVideo = function() {
             if (Authentication.IsAuthenticated) {
-                Videos.GetVideo($routeParams.videoId).then(function(data) {
-                    if (data.status === 200 && data.data.status === "success") {
-                        $scope.videos.push(data.data.data);
-                    }
-                }, function(data) {
-
+                Videos.GetVideo($routeParams.videoId).then(function(video) {
+                    $scope.videos.push(video);
                 });
             }
         }

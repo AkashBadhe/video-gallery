@@ -6,56 +6,46 @@
     <title>MyVideos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <!-- fonts -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    
-
     <!-- bootstrap -->
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
     <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-    
+    <link href="lib/toastr/toastr.min.css" rel="stylesheet" />
     <!-- Custom Theme files -->
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
-    
     <!-- Load local libraries -->
     <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/lib/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    
     <!-- Load angular libraries -->
     <script type="text/javascript" src="/lib/angular/angular.js"></script>
     <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
     <script type="text/javascript" src="/lib/ngstorage/ngStorage.min.js"></script>
     <script type="text/javascript" src="/lib/angular-md5/angular-md5.min.js"></script>
-    
+    <script type="text/javascript" src="/lib/toastr/toastr.min.js"></script>
     <!-- Load the root module -->
     <script type="text/javascript" src="app/root/root.client.module.js"></script>
     <script type="text/javascript" src="app/root/controller/root.client.controller.js"></script>
-    
     <!-- Load the login module -->
     <script type="text/javascript" src="app/login/login.client.module.js"></script>
     <script type="text/javascript" src="app/login/controllers/login.client.controller.js"></script>
-
     <!-- Load ratings module -->
     <script type="text/javascript" src="app/ratings/rating.client.module.js"></script>
     <script type="text/javascript" src="app/ratings/services/rating.client.directive.js"></script>
     <script type="text/javascript" src="app/ratings/services/rating.client.service.js"></script>
-
     <!-- Load the users module -->
     <script type="text/javascript" src="app/users/users.client.module.js"></script>
     <script type="text/javascript" src="app/users/services/authentication.client.service.js"></script>
-    
     <!-- Load video module -->
     <script type="text/javascript" src="app/videos/video.client.module.js"></script>
     <script type="text/javascript" src="app/videos/config/video.client.route.js"></script>
     <script type="text/javascript" src="app/videos/services/video.client.service.js"></script>
     <script type="text/javascript" src="app/videos/controllers/video-list.client.controller.js"></script>
     <script type="text/javascript" src="app/videos/controllers/video.client.controller.js"></script>
-    
     <!-- Bootstrap AngularJS application -->
     <script type="text/javascript" src="/application.js"></script>
 </head>
@@ -73,11 +63,9 @@
             <div ng-hide="isAuthenticated" class='login-message'>
                 <h1> Please Log in to Watch the video </h1>
             </div>
-            
             <ng-include src="'/app/templates/footer.client.view.html'"></ng-include>
         </div>
     </div>
-
 </body>
 
 </html>

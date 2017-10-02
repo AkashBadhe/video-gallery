@@ -17,7 +17,7 @@ var mainApplicationModule = angular.module(mainApplicationModuleName, [
     'angular-md5',
     'ngStorage',
     'ratings'
-]);
+])
 
 // Configure the hashbang URLs using the $locationProvider services 
 mainApplicationModule.config(['$locationProvider',
