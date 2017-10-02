@@ -8,18 +8,9 @@ angular.module('login').controller('LoginController', ['$scope', '$localStorage'
     function($scope, $localStorage, Authentication, md5, $window) {
 		$scope.storage = $localStorage;		
 
-        /**
-         * Set current user name and sessionId in localStorage.
-         */
-        $scope.user = (function() {
-            if ($scope.storage.userName && $scope.storage.sessionId) {
-                return {
-                    'username': $scope.storage.userName,
-                    'sessionId': $scope.storage.sessionId
-                };
-            } 
-            return null;
-        }());
+        $scope.user = Authentication.GetCurrentUser();
+
+        $scope.isAuthenticated = Authentication.IsAuthenticated();
 
         $scope.loginError = null;
 
@@ -37,18 +28,18 @@ angular.module('login').controller('LoginController', ['$scope', '$localStorage'
                 $(".mfp-close").trigger("click");
                 $window.location.reload();
             },function(error){
-            	$scope.user = error;
+            	$scope.loginError = error;
             });
-        }
+        };
         /**
          * Log off the current user.
          */
         $scope.logoutUser = function(){
             Authentication.LogoutUser($localStorage.sessionId).then(function(){
-                delete $localStorage.username;
+                delete $localStorage.userName;
                 delete $localStorage.sessionId;
                 $window.location.reload();
             });
-        }
+        };
     }
 ]);

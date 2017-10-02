@@ -54,4 +54,17 @@ describe('Testing login Controller', function() {
             expect(_scope.storage.sessionId).toEqual('124');
         });
     });
+
+    describe('Testing "logoutUser" method', function() {
+        it('Should logoutUser', function() {
+            spyOn(Authentication, 'LogoutUser').and.callFake(function() {
+                deferred.resolve();
+                return deferred.promise;
+            });
+            _scope.logoutUser();
+            _scope.$apply();
+            expect(_scope.storage.userName).not.toBeDefined();
+            expect(_scope.storage.sessionId).not.toBeDefined();
+        });
+    });
 });

@@ -14,7 +14,7 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
         }
 
         $scope.loadMore = function() {
-            if (Authentication.IsAuthenticated) {
+            if (Authentication.IsAuthenticated()) {
                 Videos.LoadMore($scope.videos, $scope.limit).then(function(videos) {
                     $scope.videos = $scope.videos.concat(videos)
                 }, function(err) {
@@ -28,8 +28,6 @@ angular.module('videos').controller('VideoListController', ['$scope', '$http', '
             var currentTime = $($event.currentTarget);
             var video = currentTime.children('video').get(0);
             var playButton = currentTime.children('.playpause');
-
-            currentTime.children('video').attr('controls', '');
 
             $('video').each(function(index) {
                 if (this.id != video.id) {

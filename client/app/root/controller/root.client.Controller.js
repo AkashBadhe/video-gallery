@@ -4,8 +4,8 @@
 /**
  * Creates the 'root' controller.
  */
-angular.module('root').controller('RootController', ['$scope', '$localStorage',
-    function($scope, $localStorage) {
-        $scope.isAuthenticated = $localStorage.userName && $localStorage.sessionId;
+angular.module('root').controller('RootController', ['$scope', 'Authentication',
+    function($scope, Authentication ) {
+        $scope.isAuthenticated = Authentication.IsAuthenticated();
     }
 ]);

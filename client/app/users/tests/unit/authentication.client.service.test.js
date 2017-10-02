@@ -2,16 +2,26 @@
 'use strict';
 
 describe('Testing Authentication Service', function() {
-    var Authentication;
+    var Authentication, store = {};
     beforeEach(function() {
         module('users');
+
+        // LocalStorage mock.
+        spyOn(localStorage, 'getItem').and.callFake(function(key) {
+            return store[key];
+        });
+        Object.defineProperty(sessionStorage, "setItem", { writable: true });
+        spyOn(localStorage, 'setItem').and.callFake(function(key, value) {
+            store[key] = value;
+        });
+
         inject(function(_Authentication_) {
             Authentication = _Authentication_;
         });
     });
-    it('Should be registered', function() {
-        expect(Authentication).toBeDefined();
-    });
+    // it('Should be registered', function() {
+    //     expect(Authentication).toBeDefined();
+    // });
     it('Should include "LoginUser" and "LogoutUser"', function() {
         expect(Authentication.LoginUser).toBeDefined();
         expect(Authentication.LogoutUser).toBeDefined();
@@ -43,7 +53,7 @@ describe('Testing Authentication Service', function() {
         // Use the 'inject' method to inject services
         inject(function($httpBackend) {
 
-            var sampleResponse = {"status":"success"},
+            var sampleResponse = { "status": "success" },
                 res;
             // Define a request assertion
             $httpBackend.expectGET(/\/user\/logout\?sessionId=.*/).respond(sampleResponse);

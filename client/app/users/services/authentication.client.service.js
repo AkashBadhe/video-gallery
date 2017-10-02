@@ -4,8 +4,8 @@
 /**
  * Creates the 'Authentication' service.
  */
-angular.module('users').factory('Authentication', ['$http', '$q',
-    function($http, $q) {
+angular.module('users').factory('Authentication', ['$http', '$q', '$localStorage',
+    function($http, $q, $localStorage) {
         /**
          * Calls user login api to log in user.
          * @return {[object]} user
@@ -70,12 +70,23 @@ angular.module('users').factory('Authentication', ['$http', '$q',
         }
 
         var isAuthenticated = function(){
-            return ($localStorage.username && $localStorage.sessionId) ? true : false;
+            return ($localStorage.userName && $localStorage.sessionId) ? true : false;
         }
+
+        var getCurrentUser = function() {
+            if ($localStorage.userName && $localStorage.sessionId) {
+                return {
+                    'username': $localStorage.userName,
+                    'sessionId': $localStorage.sessionId
+                };
+            } 
+            return null;
+        };
         return {
             LoginUser: loginUser,
             LogoutUser: logoutUser,
-            IsAuthenticated: isAuthenticated
+            IsAuthenticated: isAuthenticated,
+            GetCurrentUser: getCurrentUser
         }
     }
 ]);
